@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</script>
+
+    <title>For You ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #ffe6ee;
+
+            font-family: Arial, sans-serif;
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .opening {
+            width: 90%;
+            max-width: 600px;
+            padding: 30px 20px;
+        }
+
+        .heart {
+            font-size: clamp(35px, 8vw, 70px);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 7vw, 55px);
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: clamp(17px, 3vw, 24px);
+            margin-bottom: 35px;
+        }
+
+        button {
+            border: none;
+            padding: clamp(12px, 3vw, 18px) clamp(25px, 6vw, 45px);
+
+            border-radius: 50px;
+
+            background: #ff4f81;
+            color: white;
+
+            font-size: clamp(16px, 3vw, 21px);
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="opening">
+
+        <h1>Open meee!</h1>
+
+        <button onclick="openWebsite()">
+            TAP 💗
+        </button>
+        <script>
+    function openWebsite() {
+        window.location.href = "birthday.html";
+    }
+</script>
+
+    </div>
+
+
+</body>
+</html>

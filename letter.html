@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Letter For You ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #fff0f5;
+
+            font-family: Georgia, serif;
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .page {
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .title {
+            font-size: clamp(22px, 4vw, 30px);
+            color: #704f5d;
+            margin-bottom: 45px;
+        }
+
+        /* ENVELOPE */
+
+        .envelope {
+            position: relative;
+
+            width: min(85vw, 420px);
+            height: 270px;
+
+            margin: auto;
+
+            cursor: pointer;
+        }
+
+        /* Letter */
+
+        .letter {
+            position: absolute;
+
+            width: 86%;
+            height: 235px;
+
+            left: 7%;
+            bottom: 35px;
+
+            padding: 25px;
+
+            background: #fffdf8;
+
+            border-radius: 5px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+
+            z-index: 1;
+
+            opacity: 0;
+
+            transform: translateY(70px);
+
+            transition:
+                transform 1s ease,
+                opacity 0.8s ease;
+
+            text-align: left;
+
+            overflow-y: auto;
+        }
+
+        .letter h2 {
+            text-align: center;
+
+            color: #e75b82;
+
+            font-size: clamp(24px, 5vw, 32px);
+
+            margin-bottom: 18px;
+        }
+
+        .letter p {
+            color: #5f4a52;
+
+            font-size: clamp(15px, 3vw, 18px);
+
+            line-height: 1.6;
+        }
+
+        /* ENVELOPE BODY */
+
+        .envelope-body {
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 175px;
+
+            background: #f5a1bd;
+
+            border-radius: 4px;
+
+            z-index: 3;
+
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        /* LEFT TRIANGLE */
+
+        .left-fold {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 210px solid #ffb5cc;
+            border-top: 175px solid transparent;
+
+            z-index: 4;
+        }
+
+        /* RIGHT TRIANGLE */
+
+        .right-fold {
+            position: absolute;
+
+            bottom: 0;
+            right: 0;
+
+            width: 0;
+            height: 0;
+
+            border-right: 210px solid #ffb5cc;
+            border-top: 175px solid transparent;
+
+            z-index: 4;
+        }
+
+        /* TOP FLAP */
+
+        .flap {
+            position: absolute;
+
+            top: 95px;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 210px solid transparent;
+            border-right: 210px solid transparent;
+            border-top: 130px solid #ed8eac;
+
+            transform-origin: top;
+
+            transition: transform 0.8s ease;
+
+            z-index: 5;
+        }
+
+        /* HEART */
+
+        .seal {
+            position: absolute;
+
+            left: 50%;
+            top: 135px;
+
+            transform: translateX(-50%);
+
+            font-size: 38px;
+
+            z-index: 10;
+
+            transition: 0.4s ease;
+        }
+
+        /* OPEN */
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope.open .letter {
+            opacity: 1;
+
+            transform: translateY(-55px);
+
+            z-index: 6;
+        }
+
+        .envelope.open .seal {
+            opacity: 0;
+
+            transform:
+                translateX(-50%)
+                scale(0);
+        }
+
+        .instruction {
+            margin-top: 30px;
+
+            font-size: clamp(16px, 3vw, 20px);
+
+            color: #7a5d68;
+
+            animation: pulse 1.5s infinite;
+        }
+
+        .envelope.open + .instruction {
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+
+            .title {
+                margin-bottom: 30px;
+            }
+
+            .envelope {
+                width: 88vw;
+                height: 240px;
+            }
+
+            .envelope-body {
+                height: 150px;
+            }
+
+            .left-fold {
+                border-left-width: 44vw;
+                border-top-width: 150px;
+            }
+
+            .right-fold {
+                border-right-width: 44vw;
+                border-top-width: 150px;
+            }
+
+            .flap {
+                top: 85px;
+
+                border-left-width: 44vw;
+                border-right-width: 44vw;
+                border-top-width: 115px;
+            }
+
+            .seal {
+                top: 120px;
+            }
+
+            .letter {
+                height: 215px;
+                padding: 20px;
+            }
+
+            .envelope.open .letter {
+                transform: translateY(-40px);
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="page">
+
+
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openLetter()">
+
+
+            <!-- LETTER -->
+
+            <div class="letter">
+
+                <p>
+
+                    Happy Birthday My Cute Baby,
+                    I Love You So So So Much.
+
+                    <br><br>
+
+                    I still remember the first time I saw you. 
+                    It was not in 10th batch party.
+                    It was few months before it.
+                    Samishthi showed me one photo of you. She was flexing it.
+                    'Yeh dekh mera bhai.'
+                    I was impressed at first sight.
+                    We talked on phone call once too but you probably don't remember.
+                    It was for short time, hardly 2mins but it was very special for me.
+
+                    <br><br>
+
+                    And then few months later I finally got to meet you.
+                    And you still came late🥺🥺.
+                    I saw you coming with samishthi and I felt so jealous of her in that moment.
+                    I kept looking at you throughout the evening.
+                    I tried talking to you too.
+                    I wanted to ask you to write something on my shirt. 
+                    But I didn't have courage. I wasn't sure what you might think of me. 
+                    I wasn't sure if you even liked me. 
+                    But I was really happy when I got home and got your text.
+                    We were matching the first day we met, of course we were meant to be together❤️❤️.
+
+                    <br><br>
+
+                    And then two years later we met again.
+                    I still didn't have courage to talk to you or even ask for a photo together.
+                    But I made sure to stand next to you in every photo.
+                    Selfishly enough, I didn't want anyone else standing next to you except me.
+                    And this time I texted you first when I got home.
+                    Well only to ask you to send photos on group which I intentionally took in your phone. 
+                    And so we started talking.
+                    Going to that garba was the best decision I ever made, because it led me to you.
+                    You are the best thing in my life, my darling. 
+                    I often pinch myself to know it's not a dream.
+                    I always wonder how I got so lucky to be loved by you.
+                    You made me feel enough.
+                    You always supported me and told me everything was going to be okay and then you made sure everything turned out okay.
+                    You always made me feel seen and heard and safe to share my unsolved thoughts. 
+                    Baby, I am very greatful to have you.
+
+                    <br><br>
+                    Baby, I'm not perfect.
+                    I fight. I cry. I get angry. I hurt you.
+                    I'm really sorry for all this.
+                    But I promise you, I will become better for you and I will give you all the love you deserve.
+                    I will love you and only you till my last breath.
+                    I will always stand with you, even if you're wrong. 
+                    I will carry your burden with you.
+                    Baby, galti chache meri ho ya apki,
+                    Rishta toh humara hai na.
+                    Bahot pyara, bahot sundar rishta hai humara.
+                    Aur yeh rishta humesha aaisa hi rahega.
+                    And baby, one day I will marry you and build a home with you.
+                    We will have Aakriti, Awantika and Chuchu running around the house.
+                    We will travel together.
+                    We will grow together.
+                    And we will argue together.
+                    But after those arguements, we will heal together.
+                    And then we will again grow together.
+                    
+                    
+                    <br><br>
+                    I'm not going anywhere.
+                    I won't leave.
+                    I won't give up on you.
+                    And I will always be here every single time you need me.
+                    I don't care if there are a million reasons to leave.
+                    You are the only reason I need to stay.
+                    <br>
+
+                    ❤️
+
+                </p>
+
+            </div>
+
+
+            <!-- ENVELOPE -->
+
+            <div class="envelope-body"></div>
+
+            <div class="left-fold"></div>
+
+            <div class="right-fold"></div>
+
+            <div class="flap"></div>
+
+
+            <!-- HEART SEAL -->
+
+            <div class="seal">
+                ❤️
+            </div>
+
+
+        </div>
+
+
+        <div class="instruction">
+            Tap the envelope 💌
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        function openLetter() {
+
+            document
+                .getElementById("envelope")
+                .classList.add("open");
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
